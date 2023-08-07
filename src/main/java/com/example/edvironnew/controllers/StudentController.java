@@ -29,4 +29,11 @@ public class StudentController {
         Integer studentsSize = studentService.getStudentsSize(name);
         return ResponseEntity.ok(studentsSize);
     }
+
+    @GetMapping("/students/defaulters/{name}")
+    public ResponseEntity<Integer> getStudentDefaultersCount(@PathVariable String name){
+        Integer studentsSize = studentService.getStudentsDefaultersForSchool(name);
+        System.out.print(studentsSize);
+        return ResponseEntity.ok(studentsSize);
+    }
 }

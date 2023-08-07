@@ -10,5 +10,5 @@ import java.util.Optional;
 @Repository
 public interface SchoolEntityRepository extends MongoRepository<SchoolEntity, String> {
 
-    Optional<List<SchoolEntity>> findSchoolEntityByNameContains(String name);
+    Optional<SchoolEntity> findSchoolEntityByNameEquals(String name);
 }

@@ -50,12 +50,20 @@ public class StudentService {
         return studentEntityList;
     }
 
+    public Integer getStudentsDefaultersForSchool(String name){
+        Integer defaultersCount = 0;
+        List<StudentEntity> studentEntityList = getStudents();
+        SchoolEntity schoolEntity = schoolService.getSchool(name);
+        for (StudentEntity student: studentEntityList) {
+            if(student.getSchoolId() == schoolEntity.get_id())
+                defaultersCount++;
+        }
+        return defaultersCount;
+    }
+
     public Integer getStudentsSize(String name){
         Integer size = 0;
-        List<SchoolEntity> schoolEntityList = schoolService.getSchools(name);
-        for (SchoolEntity schoolEntity: schoolEntityList) {
-            size += schoolEntity.getStudent_count();
-        }
-        return size;
+        SchoolEntity schoolEntity = schoolService.getSchool(name);
+        return schoolEntity.getStudent_count();
     }
 }

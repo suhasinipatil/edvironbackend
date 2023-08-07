@@ -17,10 +17,10 @@ public class SchoolService {
         this.schoolEntityRepository = schoolEntityRepository;
     }
 
-    public List<SchoolEntity> getSchools(String name){
-        Optional<List<SchoolEntity>> schoolEntityList = schoolEntityRepository.findSchoolEntityByNameContains(name);
-        if(schoolEntityList.isPresent()){
-            return schoolEntityList.get();
+    public SchoolEntity getSchool(String name){
+        Optional<SchoolEntity> schoolEntity = schoolEntityRepository.findSchoolEntityByNameEquals(name);
+        if(schoolEntity.isPresent()){
+            return schoolEntity.get();
         }
         return null;
     }
